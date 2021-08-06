@@ -4,18 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Usuario {
-	private static int id;	// CONTADOR de usuarios.
 	private int id1;		// IDENTIFICADOR unico del usuario.
 	private String name;	// Nombre de usuario.
 	private String pass;	// Contraseña del usuario.
 	LocalDate fecha;	// Fecha de registro del usuario.
 	private ArrayList<Publicacion> muro;
-	public static int getId() {
-		return id;
-	}
-	public static void setId(int id) {
-		Usuario.id = id;
-	}
+	
 	public int getId1() {
 		return id1;
 	}
