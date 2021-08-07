@@ -8,7 +8,9 @@ public class Usuario {
 	private String name;	// Nombre de usuario.
 	private String pass;	// Contraseña del usuario.
 	LocalDate fecha;	// Fecha de registro del usuario.
-	private ArrayList<Publicacion> muro;
+	private ArrayList<Publicacion> muro;	// Arreglo con las publicaciones del usuario.
+	private ArrayList<String> contactos;	// Personas que el usuario sigue.
+	
 	
 	public int getId1() {
 		return id1;
@@ -39,6 +41,12 @@ public class Usuario {
 	}
 	public void setMuro(ArrayList<Publicacion> muro) {
 		this.muro = muro;
+	}
+	public ArrayList<String> getContactos() {
+		return contactos;
+	}
+	public void setContactos(ArrayList<String> contactos) {
+		this.contactos = contactos;
 	}
 }
 
