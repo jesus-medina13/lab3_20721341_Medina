@@ -10,6 +10,7 @@ public class Publicacion {
 	private String autor;	// Autor de la publicacion.
 	private String type;	// Tipo de publicacion
 	private String contenido;	// Contenido de la publicacion.
+	private ArrayList<String> viewers; //Lista de personas que pueden ver la publicacion,
 	private ArrayList<Reaccion> reacciones; // Lista de Reacciones de la publicacion.
 	
 	public int getId1() {
@@ -47,6 +48,12 @@ public class Publicacion {
 	}
 	public void setReacciones(ArrayList<Reaccion> reacciones) {
 		this.reacciones = reacciones;
+	}
+	public ArrayList<String> getViewers() {
+		return viewers;
+	}
+	public void setViewers(ArrayList<String> viewers) {
+		this.viewers = viewers;
 	}
 	
 	

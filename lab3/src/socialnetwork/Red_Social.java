@@ -21,7 +21,14 @@ public class Red_Social {
 			}
 		}
 	}
-	
+	public String getNameLogueado() {
+		for(int i = 0; i < listaUsuarios.size(); i++) {
+			if(listaUsuarios.get(i).getId1() == usuarioLogueado) {
+				return listaUsuarios.get(i).getName();
+			}
+		}
+		return "";
+	}
 	
 	//Metodo para registrar un usuario en la red social.
 	public void register(String nombre, String password) {
@@ -30,6 +37,8 @@ public class Red_Social {
 		aux.setName(nombre);
 		aux.setPass(password);
 		aux.setFecha(LocalDate.now());
+		aux.setContactos(new ArrayList<String>());
+		aux.setMuro(new ArrayList<Publicacion>());
 		for(int i = 0; i < listaUsuarios.size(); i++) {
 			if(listaUsuarios.get(i).getName().equals(nombre)) {						//Caso en que el nombre ya este registrado.
 				System.out.println("El usuario ya se encuentra registrado\n");	
@@ -86,6 +95,41 @@ public class Red_Social {
 			}
 		}
 		System.out.println("El nombre que ingresaste es incorrecto.");
+		return;
+	}
+	public void post(String type, String contenido, ArrayList<String>listaU) {
+		
+		//Se crea la publicacion.
+		Publicacion aux = new Publicacion();
+		aux.setId1(muro.size()+1);
+		aux.setAutor(getNameLogueado());
+		aux.setContenido(contenido);
+		aux.setType(type);
+		aux.setFecha(LocalDate.now());
+		aux.setReacciones(new ArrayList<Reaccion>());
+		aux.setViewers(listaU);
+		
+		muro.add(aux);
+		//Primer ciclo para encontrar al usuario logueado y agregar el post creado en su muro personal.
+		for(int i = 0; i < listaUsuarios.size();i++) {
+			if(listaUsuarios.get(i).getId1() == usuarioLogueado) {
+				listaUsuarios.get(i).getMuro().add(aux);
+				//Segundo ciclo para recorrer la lista de usuarios a quienes se le quiere compartir el post
+				for(int j = 0; j < listaU.size(); j++) {
+					//Aqui se recorre la lista de contactos del usuario logueado y se revisa que los usuarios de la lista sean de la lista de contactos.
+					for(int k = 0; k < listaUsuarios.get(i).getContactos().size(); k++) {
+						if(listaU.get(j).equals(listaUsuarios.get(i).getContactos().get(k))) {
+							for(int l = 0; l < listaUsuarios.size();l++) {
+								if(listaUsuarios.get(l).getName().equals(listaU.get(j))){
+									listaUsuarios.get(l).getMuro().add(aux);
+								}
+							}
+						}
+					}	
+				}
+			}
+		}
+	
 		return;
 	}
 	
