@@ -25,8 +25,8 @@ public class Main {
 			System.out.println("Seleccione una opcion: ");
 			System.out.println("1) Registrarse.\n");
 			System.out.println("2) Loguearse.\n");
-			System.out.println("3) DesLoguearse.\n");
-			System.out.println("4) Ver Red Social.\n");
+			System.out.println("3) Ver Red Social.\n");
+			System.out.println("4) Cerrar Programa.\n");
 			opcion = input.nextLine();
 			if(opcion.equals("1")) {
 				String nombre;
@@ -54,8 +54,24 @@ public class Main {
 						System.out.println("3) Compartir una publicacion.\n");
 						System.out.println("4) Desloguearse.\n");
 						opcion2 = input.nextLine();
-						
-						if(opcion2.equals("4")) {
+						if(opcion2.equals("1")) {
+							String nombre2;
+							sn1.printNombresUsuarios();
+							System.out.println("Nombre del usuario que desea seguir: ");
+							nombre2 = input.nextLine();
+							sn1.follow(nombre2);
+						}
+						else if(opcion2.equals("2")) {
+							String type;
+							String contenido;
+							String nombre3;
+							System.out.println("Que tipo de publicacion realizará: \n-Photo\n-Text");
+							type = input.nextLine();
+							System.out.println("Escriba el contenido de su publicacion: ");
+							contenido = input.nextLine();
+							
+						}
+						else if(opcion2.equals("4")) {
 							sn1.logout();
 							break;
 						}
@@ -64,10 +80,8 @@ public class Main {
 				
 			}
 			else if(opcion.equals("3")) {
-				sn1.logout();
 			}
 			else if(opcion.equals("4")) {
-				
 				break;
 			}
 		}

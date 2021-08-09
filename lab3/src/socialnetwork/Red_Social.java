@@ -8,7 +8,13 @@ public class Red_Social {
 	int usuarioLogueado;
 	ArrayList<Usuario> listaUsuarios;
 	ArrayList<Publicacion> muro;
-	
+	public void printNombresUsuarios() {
+		System.out.println("Lista de Usuarios:");
+		for(int i = 0; i < listaUsuarios.size(); i++) {
+			System.out.println("- " + listaUsuarios.get(i).getName());
+		}
+		return;
+	}
 	public void printNameUserLogueado() {
 		if(usuarioLogueado == 0) {
 			System.out.println("No hay ningun usuario logueado en este momento.\n");
@@ -89,6 +95,7 @@ public class Red_Social {
 							return;
 						}
 						listaUsuarios.get(j).getContactos().add(name1);
+						System.out.println("Usuario seguido correctamente.");
 						return;
 					}
 				}
