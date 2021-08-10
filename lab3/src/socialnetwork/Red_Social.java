@@ -140,6 +140,31 @@ public class Red_Social {
 		return;
 	}
 	
+	public void share(int idPost, ArrayList<String>listaU) {
+		Publicacion post;
+		for(int i = 0; i < muro.size();i++) {
+			if(muro.get(i).getId1() == idPost) {
+				post = muro.get(i);
+			}
+		}
+		for(int i = 0; i < listaUsuarios.size();i++) {
+			if(listaUsuarios.get(i).getId1() == usuarioLogueado) {
+				for(int j = 0; j < listaU.size(); j++) {
+					for(int k = 0; k < listaUsuarios.get(i).getContactos().size(); k++) {
+						if(listaU.get(j).equals(listaUsuarios.get(i).getContactos().get(k))) {
+							for(int l = 0; l < listaUsuarios.size();l++) {
+								if(listaUsuarios.get(l).getName().equals(listaU.get(j))){
+									listaUsuarios.get(l).getMuro().add(post);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+	}
+	
 
 	
 }
