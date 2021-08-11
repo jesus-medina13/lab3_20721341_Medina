@@ -114,7 +114,6 @@ public class Red_Social {
 		aux.setType(type);
 		aux.setFecha(LocalDate.now());
 		aux.setReacciones(new ArrayList<Reaccion>());
-		aux.setViewers(listaU);
 		
 		muro.add(aux);
 		//Primer ciclo para encontrar al usuario logueado y agregar el post creado en su muro personal.
@@ -123,25 +122,21 @@ public class Red_Social {
 				listaUsuarios.get(i).getMuro().add(aux);
 				//Segundo ciclo para recorrer la lista de usuarios a quienes se le quiere compartir el post
 				for(int j = 0; j < listaU.size(); j++) {
-					//Aqui se recorre la lista de contactos del usuario logueado y se revisa que los usuarios de la lista sean de la lista de contactos.
-					for(int k = 0; k < listaUsuarios.get(i).getContactos().size(); k++) {
-						if(listaU.get(j).equals(listaUsuarios.get(i).getContactos().get(k))) {
-							for(int l = 0; l < listaUsuarios.size();l++) {
-								if(listaUsuarios.get(l).getName().equals(listaU.get(j))){
-									listaUsuarios.get(l).getMuro().add(aux);
-								}
-							}
+					//Aqui se recorre la lista de contactos para agregar buscar 
+					for(int k = 0; k < listaUsuarios.size(); k++) {
+						if(listaUsuarios.get(k).getName().equals(listaU.get(j))) {
+							listaUsuarios.get(k).getMuro().add(aux);
 						}
 					}	
 				}
 			}
 		}
-	
+		System.out.println("Publicacion subida correctamente.");
 		return;
 	}
 	
 	public void share(int idPost, ArrayList<String>listaU) {
-		Publicacion post;
+		Publicacion post = new Publicacion();
 		for(int i = 0; i < muro.size();i++) {
 			if(muro.get(i).getId1() == idPost) {
 				post = muro.get(i);

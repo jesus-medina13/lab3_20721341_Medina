@@ -65,10 +65,29 @@ public class Main {
 							String type;
 							String contenido;
 							String nombre3;
+							String opcion3;
+							ArrayList<String>listaU = new ArrayList<String>();
 							System.out.println("Que tipo de publicacion realizará: \n-Photo\n-Text");
 							type = input.nextLine();
 							System.out.println("Escriba el contenido de su publicacion: ");
 							contenido = input.nextLine();
+								
+							while(true) {
+								System.out.println("Desea dirigir a otro usuario la publicacion? \n1) Si.\n2)No.");
+								opcion3 = input.nextLine();
+								if(opcion3.equals("1")) {
+									sn1.printNombresUsuarios();
+									System.out.println("Ingrese el nombre: ");
+									nombre3 = input.nextLine();
+									listaU.add(nombre3);
+								}
+								else if(opcion3.equals("2")){
+									sn1.post(type, contenido, listaU);
+									break;
+								}
+							}
+						}
+						else if(opcion2.equals("3")) {
 							
 						}
 						else if(opcion2.equals("4")) {

@@ -48,5 +48,9 @@ public class Usuario {
 	public void setContactos(ArrayList<String> contactos) {
 		this.contactos = contactos;
 	}
+	
+	public void visualizeUsuario() {
+		System.out.println("ID: " + this.id1 + "\nFECHA DE CREACION: " + this.fecha + "\nUSERNAME: " + this.name);
+	}
 }
 
