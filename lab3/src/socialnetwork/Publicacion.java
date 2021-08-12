@@ -50,6 +50,7 @@ public class Publicacion {
 	}
 	public void visualizePublicacion() {
 		System.out.println("ID: " + this.id1 + "\nFECHA DE CREACION: " + this.fecha + "AUTOR: " + this.autor +"\nTIPO: " + this.type + "\nCONTENIDO: " + this.contenido);
+		return;
 	}
 	
 }

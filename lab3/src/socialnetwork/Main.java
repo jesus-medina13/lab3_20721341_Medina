@@ -7,13 +7,27 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		Red_Social sn1 = new Red_Social();
+		Red_Social sn1 = new Red_Social();	
 		String snName;
 		System.out.println("###BIENVENIDO###\n ELIJA UN NOMBRE PARA LA RED SOCIAL: ");
-		snName = input.nextLine();
-		sn1.name = snName;
+		//snName = input.nextLine();
+		//sn1.name = snName;
+		sn1.name = "Instagram";
 		sn1.usuarioLogueado = 0;
 		sn1.listaUsuarios = new ArrayList<Usuario>();
+		sn1.muro = new ArrayList<Publicacion>();
+		
+		sn1.register("user1", "pass1");
+		sn1.register("user2", "pass2");
+		sn1.register("user3", "pass3");
+		sn1.register("user4", "pass4");
+		sn1.register("user5", "pass5");
+		
+		sn1.login("user1", "pass1");
+		sn1.follow("user2");
+		sn1.follow("user3");
+		sn1.logout();
+		
 		System.out.println("#####INICIO#####\nRED SOCIAL: " + sn1.name + "\nUsuario Logueado: ");
 		sn1.printNameUserLogueado();
 		
@@ -99,6 +113,7 @@ public class Main {
 				
 			}
 			else if(opcion.equals("3")) {
+				sn1.socialNetworkToString();
 			}
 			else if(opcion.equals("4")) {
 				break;

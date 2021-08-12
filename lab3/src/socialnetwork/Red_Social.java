@@ -139,7 +139,12 @@ public class Red_Social {
 		Publicacion post = new Publicacion();
 		for(int i = 0; i < muro.size();i++) {
 			if(muro.get(i).getId1() == idPost) {
-				post = muro.get(i);
+				post.setAutor( muro.get(i).getAutor());
+				post.setContenido(muro.get(i).getContenido());
+				post.setFecha(muro.get(i).getFecha());
+				post.setId1(muro.get(i).getId1());
+				post.setReacciones(muro.get(i).getReacciones());
+				post.setType(muro.get(i).getType());
 			}
 		}
 		for(int i = 0; i < listaUsuarios.size();i++) {
@@ -159,7 +164,20 @@ public class Red_Social {
 		}
 		
 	}
-	
+	public void socialNetworkToString() {
+		if(usuarioLogueado == 0) {			
+			
+			System.out.println("Lista De Usuarios:");
+			for(int i = 0; i < listaUsuarios.size();i++) {
+				listaUsuarios.get(i).visualizeUsuario();
+			}
+			System.out.println("Muro:");
+			for(int i = 0; i < muro.size();i++) {
+				muro.get(i).visualizePublicacion();
+			}
+		}
+		
+	}
 
 	
 }
