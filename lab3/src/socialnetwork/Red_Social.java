@@ -2,7 +2,11 @@ package socialnetwork;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+/**
+ * Una clase para representar la red social
+ * @author jesus
+ *
+ */
 public class Red_Social {
 	String name;
 	int usuarioLogueado;
@@ -34,6 +38,15 @@ public class Red_Social {
 			}
 		}
 		return "";
+	}
+	public void printContactiosUsuarioLogueado() {
+		for(int i = 0; i < listaUsuarios.size(); i++) {
+			if(listaUsuarios.get(i).getId1() == usuarioLogueado) {
+				for(int j = 0; j<listaUsuarios.get(i).getContactos().size();j++) {
+					System.out.println("-" + listaUsuarios.get(i).getContactos().get(j));
+				}
+			}
+		}
 	}
 	
 	//Metodo para registrar un usuario en la red social.
@@ -104,6 +117,7 @@ public class Red_Social {
 		System.out.println("El nombre que ingresaste es incorrecto.");
 		return;
 	}
+	//Metodo para que un usuario realizar una publicacion.
 	public void post(String type, String contenido, ArrayList<String>listaU) {
 		
 		//Se crea la publicacion.
@@ -134,14 +148,14 @@ public class Red_Social {
 		System.out.println("Publicacion subida correctamente.");
 		return;
 	}
-	
+	//Metodo para que un usuario pueda compartir una publicacion con sus seguidos.
 	public void share(int idPost, ArrayList<String>listaU) {
 		Publicacion post = new Publicacion();
 		for(int i = 0; i < muro.size();i++) {
 			if(muro.get(i).getId1() == idPost) {
 				post.setAutor( muro.get(i).getAutor());
 				post.setContenido(muro.get(i).getContenido());
-				post.setFecha(muro.get(i).getFecha());
+				post.setFecha(LocalDate.now());
 				post.setId1(muro.get(i).getId1());
 				post.setReacciones(muro.get(i).getReacciones());
 				post.setType(muro.get(i).getType());
@@ -149,6 +163,7 @@ public class Red_Social {
 		}
 		for(int i = 0; i < listaUsuarios.size();i++) {
 			if(listaUsuarios.get(i).getId1() == usuarioLogueado) {
+				listaUsuarios.get(i).getMuro().add(post);
 				for(int j = 0; j < listaU.size(); j++) {
 					for(int k = 0; k < listaUsuarios.get(i).getContactos().size(); k++) {
 						if(listaU.get(j).equals(listaUsuarios.get(i).getContactos().get(k))) {
@@ -160,20 +175,27 @@ public class Red_Social {
 						}
 					}
 				}
+				System.out.println("Publicacion compartida correctamente.");
+				return;
 			}
 		}
+		System.out.println("Error compartiendo la publicacion.");
 		
 	}
+	//Metodo para mostrar por pantalla la red social.
 	public void socialNetworkToString() {
 		if(usuarioLogueado == 0) {			
 			
 			System.out.println("Lista De Usuarios:");
 			for(int i = 0; i < listaUsuarios.size();i++) {
-				listaUsuarios.get(i).visualizeUsuario();
+				listaUsuarios.get(i).visualizePerfil();
+				System.out.println("----------------------------------------");
 			}
-			System.out.println("Muro:");
-			for(int i = 0; i < muro.size();i++) {
-				muro.get(i).visualizePublicacion();
+		}else {
+			for(int i = 0; i < listaUsuarios.size();i++) {
+				if(listaUsuarios.get(i).getId1() == usuarioLogueado) {
+					listaUsuarios.get(i).visualizePerfil();
+				}
 			}
 		}
 		

@@ -3,6 +3,11 @@ package socialnetwork;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Una clase para representar las reacciones en una red social.
+ * @author jesus
+ *
+ */
 public class Reaccion {
 	
 	private int id1;		// IDENTIFICADOR unico de la reaccion.
@@ -11,6 +16,7 @@ public class Reaccion {
 	private String type;	// Tipo de reaccion.
 	private String contenido;	// Contenido de la reaccion.
 	
+//SELECTORES Y MODIFICADORES.
 	public int getId1() {
 		return id1;
 	}

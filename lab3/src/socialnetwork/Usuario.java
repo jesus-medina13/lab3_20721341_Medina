@@ -3,6 +3,12 @@ package socialnetwork;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Una clase para representar los usuarios de la red social
+ * @author jesus
+ *
+ */
+
 public class Usuario {
 	private int id1;		// IDENTIFICADOR unico del usuario.
 	private String name;	// Nombre de usuario.
@@ -49,8 +55,18 @@ public class Usuario {
 		this.contactos = contactos;
 	}
 	
-	public void visualizeUsuario() {
+	public void visualizePerfil() {
 		System.out.println("ID: " + this.id1 + "\nFECHA DE CREACION: " + this.fecha + "\nUSERNAME: " + this.name);
+		System.out.println("ESTE USUARIO SIGUE A: ");
+		for(int i = 0; i < contactos.size(); i++) {
+			System.out.println("-" + contactos.get(i));
+		}
+		System.out.println("\n");
+		System.out.println("Muro: ");
+		for(int i = 0; i < muro.size(); i++) {
+			muro.get(i).visualizePublicacion();
+			
+		}
 	}
 }
 

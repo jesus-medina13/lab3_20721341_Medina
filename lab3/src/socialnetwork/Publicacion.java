@@ -2,7 +2,11 @@ package socialnetwork;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+/**
+ * Una clase para representar las publicaciones de la red social
+ * @author jesus
+ *
+ */
 public class Publicacion {
 
 	private int id1;		// IDENTIFICADOR unico de la publicacion.
@@ -12,6 +16,8 @@ public class Publicacion {
 	private String contenido;	// Contenido de la publicacion.
 	private ArrayList<Reaccion> reacciones; // Lista de Reacciones de la publicacion.
 	
+	
+	//SELECTORES Y MODIFICADORES.
 	public int getId1() {
 		return id1;
 	}
@@ -49,7 +55,7 @@ public class Publicacion {
 		this.reacciones = reacciones;
 	}
 	public void visualizePublicacion() {
-		System.out.println("ID: " + this.id1 + "\nFECHA DE CREACION: " + this.fecha + "AUTOR: " + this.autor +"\nTIPO: " + this.type + "\nCONTENIDO: " + this.contenido);
+		System.out.println("ID: " + this.id1 + "\nFECHA: " + this.fecha + "AUTOR: " + this.autor +"\nTIPO: " + this.type + "\nCONTENIDO: " + this.contenido + "\n");
 		return;
 	}
 	
